@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -19,6 +20,9 @@ import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+// ✅ Chatbot import
+import Chatbot from "./components/Chatbot";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +30,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+
+      {/* ✅ Chatbot globally visible */}
+      <Chatbot />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -44,6 +52,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );
